@@ -1,0 +1,171 @@
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="card card-inverse card-success">
+                    <div class="card-header">
+                        Riverwalk Update
+                    </div>
+                    <div class="card-block">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nib euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="card card-inverse card-success">
+                    <div class="card-header">
+                        Your Security is our Primary Concern
+                    </div>
+                    <div class="card-block">
+                        At Riverwalk we take your privacy and security as our highest priority. Please keep your profile information updated and current so we can better protect you.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- THIS IS THE PERSONAL DATA FORM -->
+        <form [formGroup]="profileForm" novalidate (ngSubmit)="saveProfile(profileForm.value, profileForm.valid)">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card card-inverse card-success">
+                        <div class="card-header">
+                            <strong>Personal Information</strong>
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-12">
+                                    <label for="email">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope"></i>
+                  </span>
+                                        <input (blur)="emailValidate('Email *Required', 'Use 1-30 letters to spell your name.')" type="text" class="form-control" id="email" formControlName="email" placeholder="{{profile.email}}"readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="first_name">First Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                  </span>{{result}}
+                                        <input (blur)="firstNameValidate('First Name *Required', 'Use 1-30 letters to spell your name.')" type="text" class="form-control" placeholder="Enter First name" value="{{profile.first_name}}" id="first_name" formControlName="first_name">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="middle_name">Middle Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                  </span>
+                                        <input (blur)="middleNameValidate('Middle Name *Required', 'Use 1-30 letters to spell your name.')"  type="text" class="form-control" placeholder="Enter Middle name" value="{{profile.middle_name}}" id="middle_name" formControlName="middle_name">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="last_name">Last Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                  </span>
+                                        <input (blur)="lastNameValidate('Last Name *Required', 'Use 1-30 letters to spell your name.')"  type="text" class="form-control" placeholder="{{profile.last_name}}" id="last_name" formControlName="last_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="dob">Date of Birth</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-birthday-cake"></i>
+                  </span>
+                                        <input (blur)="dobValidate('DOB *Required', 'Use correct birth year.')"  type="date" class="form-control" placeholder="Enter your birth date"  id="dob" formControlName="dob">
+                                    
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="ssn">Social Security Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-circle-o-notch"></i></span>
+                                        <input (blur)="ssnValidate('SSN *Required', 'Use 123-45-6789 or 123456789')"  type="text" class="form-control" placeholder="Enter SSN" value="{{profile.ssn}}" id="ssn" formControlName="ssn">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="mobile_phone">Mobile Phone</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                                        <input (blur)="mobilePhoneValidate('Mobile phone *Required', 'Use 123-456-7890 or 1234567890')"  type="text" class="form-control" placeholder="Enter Mobile Phone" value="{{profile.mobile_phone}}" id="mobile_phone" formControlName="mobile_phone">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="home_phone">Home Phone</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                        <input (blur)="homePhoneValidate('Home phone not', 'Use 123-456-7890 or 1234567890')" type="text" class="form-control" placeholder="Enter Home Phone" value="{{profile.home_phone}}" id="home_phone" formControlName="home_phone">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer tag-primary white">
+                            Continue - Home Address
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- THIS IS THE ADDRESS FORM -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card card-inverse card-success">
+                        <div class="card-header">
+                            <strong>Home Address</strong>
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-12">
+                                    <label for="street_address">Street</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                        <input (blur)="streetValidate('Street *Required', '123 Example Street')" type="text" class="form-control" id="street_address" formControlName="street_address" placeholder="Enter street name"  value="{{profile.street_address}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="city_address">City</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                        <input (blur)="cityValidate('City *Required', 'City Name')"  type="text" class="form-control" placeholder="Enter city name" id="city_address" formControlName="city_address" value="{{profile.city_address}}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="state_address">State</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                        <select (blur)="stateValidate('State *Required', 'State Name')" class="form-control" id="state_address" formControlName="state_address" value="{{profile.state_address}}">
+                                            <option *ngFor="let state of states">{{state}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="zip_address">Postal Code</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                        <input (blur)="zipValidate('Zip *Required', 'Zip code')" type="text" class="form-control" placeholder="Postal Code" id="zip_address" formControlName="zip_address" value="{{profile.zip_address}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer tag-primary white">
+                            Complete profile subscription -
+                            <button type="submit" (click)="toastSuccess('Form Update', 'You have updated your personal information successfully.')" [disabled]="!profileForm.valid" class="btn btn-sm btn-danger btn-oj"><i class="fa fa-dot-circle-o"></i> Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng2-toasty [position]="'top-left'"></ng2-toasty>

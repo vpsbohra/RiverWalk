@@ -1,0 +1,184 @@
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <!-- THIS IS THE PAYMENT METHOD FORM -->
+            <form [formGroup]="creditCardForm" novalidate (ngSubmit)="saveCreditCard(creditCardForm.value, creditCardForm.valid)" action="https://www.mysite.com/examplescript.php" method="post">
+                <!-- Payment Method Form -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="card card-inverse card-success">
+                            <div class="card-header">
+                                <strong>Add Credit Card</strong>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="firstName">First Name on Card</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <input (blur)="firstNameValidate('Card Holder Name *Required', 'Enter the first name as it appears on the card')" type="text" class="form-control" placeholder="Enter first name on card" id="firstName" formControlName="firstName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="lastName">Last Name on Card</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <input (blur)="lastNameValidate('Card Holder Name *Required', 'Enter the last name as it appears on the card')" type="text" class="form-control" placeholder="Enter last name on card" id="lastName" formControlName="lastName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="cardNumber">Credit Card number</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <input (blur)="cardNumberValidate('Card Number *Required', 'Enter the card number with no spaces')" type="text" class="form-control" placeholder="Enter your credit card number" id="cardNumber" formControlName="cardNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="cardType">Card Type</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <select (blur)="cardTypeValidate('Credit Card Type *Required', 'Select the card type')" class="form-control" id="cardType" formControlName="cardType">
+                                                <option *ngFor="let cardType of cardTypes">{{cardType}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="expMonth">Month</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <select (blur)="expMonthValidate('Expiration Month *Required', 'Enter the expiration date')" class="form-control" id="expMonth" formControlName="expMonth">
+                                                <option *ngFor="let expMonth of expMonths">{{expMonth}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="expYear">Year</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <select (blur)="expYearValidate('Card Expiration *Required', 'Enter the expiration date')" class="form-control" id="expYear" formControlName="expYear">
+                                                <option *ngFor="let expYear of expYears">{{expYear}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="cvc">CVC</label>
+                                        <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                      </span>
+                                            <input (blur)="cvcValidate('CVC is Required *Required', 'CVC on the back')" type="text" class="form-control" placeholder="Enter your CVC number" id="cvc" formControlName="cvc">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer tag-primary white">
+                                Continue - Billing Address
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- THIS IS THE ADDRESS FORM -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="card card-inverse card-success">
+                            <div class="card-header">
+                                <strong>Billing Address</strong>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-12">
+                                        <label for="street_address">Street</label>
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                            <input (blur)="streetValidate('Street *Required', '123 Example Street')" type="text" class="form-control" id="street_address" formControlName="street_address" placeholder="Enter street name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="city_address">City</label>
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                            <input (blur)="cityValidate('City *Required', 'City Name')"  type="text" class="form-control" placeholder="Enter city name" id="city_address" formControlName="city_address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="state_address">State</label>
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                            <select (blur)="stateValidate('State *Required', 'State Name')" class="form-control" id="state_address" formControlName="state_address">
+                                                <option *ngFor="let state of states">{{state}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4">
+                                        <label for="zip_address">Postal Code</label>
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-street-view"></i>
+                  </span>
+                                            <input (blur)="zipValidate('Zip *Required', 'Zip code')" type="text" class="form-control" placeholder="Postal Code" id="zip_address" formControlName="zip_address">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer tag-primary white">
+                                Add Billing Method -
+                                <button type="submit" (click)="toastSuccess('Form Update', 'You have updated your personal information successfully.')" [disabled]="!creditCardForm.valid" class="btn btn-sm btn-danger btn-oj"><i class="fa fa-dot-circle-o"></i> Add Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <!-- THIS IS THE PAYMENT METHOD LIST -->
+            <div [hidden]="paymentSubmitted">
+                <form *ngIf="paymentActive" (ngSubmit)="paymentSubmit()" #paymentForm="ngForm" >
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="card card-inverse card-success">
+                                <div class="card-header">
+                                    <strong>Card on File -</strong>
+                                </div>
+                                <div class="card-block">
+                                    <div class="form-group col-sm-12 col-md-12">
+                                        <label for="lastFour">Last 4 of Card Number</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-credit-card"></i>
+                    </span>
+                                            <input disabled type="text" class="form-control" placeholder="0000 0000 0000 0000" id="lastFour">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer tag-primary white">
+                                    <button type="submit" class="btn btn-sm btn-danger btn-oj"><i class="fa fa-dot-circle-o"></i> Make Default</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-oj"><i class="fa fa-dot-circle-o"></i> Remove Payment Method</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng2-toasty [position]="'top-left'"></ng2-toasty>
+
+
+
+
+
+
